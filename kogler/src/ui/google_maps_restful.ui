@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>387</height>
+    <width>470</width>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,6 +44,24 @@ border-color: #00695C;</string>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+padding: 3.5px;
+background-color: #80CBC4;
+border-width: 1px;
+border-color: #00695C;
+color:white;
+}
+
+QLineEdit:hover {
+	background-color: #FFFFFF;
+	color:black
+}</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="styleSheet">
@@ -64,24 +82,6 @@ QLabel:hover {
        </property>
        <property name="text">
         <string>Start:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="styleSheet">
-        <string notr="true">QLineEdit {
-padding: 3.5px;
-background-color: #80CBC4;
-border-width: 1px;
-border-color: #00695C;
-color:white;
-}
-
-QLineEdit:hover {
-	background-color: #FFFFFF;
-	color:black
-}</string>
        </property>
       </widget>
      </item>
@@ -133,6 +133,184 @@ QLineEdit:hover {
 }</string>
        </property>
       </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="verticalGroupBox">
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+padding: 5px;
+background-color:#009688;
+border-style: outset;
+color:white;
+border-width: 1px;
+border-color: #00695C;
+border-width:10px;
+border-color: #00695C;
+}</string>
+            </property>
+            <property name="text">
+             <string>Transportation</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="radioButton_3">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  Walking</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QRadioButton" name="radioButton_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  Bicycling</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="radioButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  Driving</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="verticalGroupBox_3">
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+padding: 5px;
+background-color:#009688;
+border-style: outset;
+color:white;
+border-width: 1px;
+border-color: #00695C;
+border-width:10px;
+border-color: #00695C;
+}</string>
+            </property>
+            <property name="text">
+             <string>Language</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_5">
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  DE</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_4">
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  EN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_6">
+            <property name="styleSheet">
+             <string notr="true">* {
+	padding: 10px;
+	text-align: center;
+	background-color: #80CBC4;
+	color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>  EL</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

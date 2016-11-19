@@ -1,9 +1,21 @@
+"""
+Model
+"""
+
 import requests
 import xml.etree.ElementTree as ET
 
 
 class Model(object):
+    """
+    This Class is the Model
+    """
+
     def __init__(self, url="http://maps.googleapis.com/maps/api/directions/xml"):
+        """ init
+
+        :param url:
+        """
         self.origin = ""
         self.dest = ""
         self.output = ""
@@ -11,11 +23,31 @@ class Model(object):
         self.param = {}
         self.url = url
 
-    def getData(self, origin, dest):
+    def getData(self, origin, dest, mode, lang):
+        if mode == "  Driving":
+            self.param['mode'] = "driving"
+        elif mode == "  Bicycling":
+            self.param['mode'] = "bicycling"
+        elif mode == "  Walking":
+            self.param['mode'] = "walking"
+
+        if lang == "  DE":
+            self.param['language'] = "de"
+        elif lang == "  EN":
+            self.param['language'] = "en"
+        elif lang == "  EL":
+            self.param['language'] = "el"
+
+        print(self.param)
+
+
         self.origin = origin
         self.dest = dest
         self._pushParam()
         xml = requests.get(self.url, self.param)
+
+        if (self.getStatusFromXml(xml)) != "OK":
+            print("Not OK")
 
         self.instr = self.getInstrFromXml(xml)
         self.time = self.getTimeFromXml(xml)
@@ -54,7 +86,6 @@ class Model(object):
         for route in root.iter('route'):
             leg = route[1]
             dur = leg.find('duration')[1].text
-            print(dur)
             dist = leg.find('distance')[1].text
             time += "Sie brauchen insgesamt " + dur + "<br>" \
                                                       "Bei einer Distanz von " + dist + "<br><br>"
