@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pygame Clock's documentation!
-========================================
+Welcome to GM-Form's documentation!
+===================================
 
 Bibliographic feild:
 --------------------
-   :Author: Philipp Kogler
+   :Author: Anonym
    :organization: TGM Wien
    :date: 2016-12-11
    :revision: 1.0.1
@@ -23,27 +23,33 @@ Contents:
 
    controller
    model
+   view
 
 Usage:
 ------
 *Controller*
 
->>> from kogler.clock_controller import Controller
->>> from datetime import datetime
->>> c = Controller((600,700), View.CLR_SCHEMA_BROWN, datetime.now().time(), 1)
+>>> from kogler.src.controller.gm_controller import Controller
+>>> # Starts the Application
+>>> c = Controller()
 
-*View*
+*Model REST - Service*
 
->>> from kogler.clock_view import View
->>> import pygame as pg
->>> v = View(View.CLR_SCHEMA_BROWN, pg.screen, (600.700))
->>> # Update View
->>> v.update_view(pg.time.Clock())
->>> # draw Analog Clock
->>> v.show_analog_clock(True)
+>>> from kogler.src.model.gm_model import Model
+>>> url = "http://maps.googleapis.com/maps/api/directions/xml"
+>>> m = Model(url)
+>>> origin = "Wien"
+>>> dest = "Nussdorf"
+>>> mode = "walking"
+>>> lang = "DE"
+>>> # Call getData with Parameters
+>>> m.getData(origin, dest, mode, lang)
 
 View:
 =====
+
+.. image:: _static/view.png
+       :align: center
 
 
 Indices and tables

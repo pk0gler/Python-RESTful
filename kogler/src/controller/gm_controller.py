@@ -16,7 +16,7 @@ from kogler.src.view.gm_view import Ui_Form
 
 
 class Controller(QWidget):
-    """ Creates the ClockController for the (M)VC - Application
+    """ Creates the ClockController for the MVC - Application
 
        This class acts as the MainController for all interactions with
        the MainView.
@@ -28,21 +28,25 @@ class Controller(QWidget):
            *init - Method*
            :func:`__init__`
 
-           *game_start_game_loop - Method*
-           :func:`start_game_loop`
+           *reset - Method*
+           :func:`reset`
 
-           *initiate_buttons - Method*
-           :func:`initiate_buttons`
+           *submit - Method*
+           :func:`submit`
 
-           *change_mode - Method*
-           :func:`change_mode`
+           *getRadios - Method*
+           :func:`getRadios`
+
+           *keyPressEvent - Method*
+           :func:`keyPressEvent`
 
        """
 
     def __init__(self):
         """ init Method
 
-        bla
+        Initiates the Controller
+        Generates an Object of the view and the model
 
         """
         # Call Super Constructor (QMainWindow)
@@ -56,6 +60,12 @@ class Controller(QWidget):
         self.show()
 
     def reset(self):
+        """ reset - Method
+
+        This method will be called when the user clicks the reset Button in the view
+        It will reset all Values to its initial states
+
+        """
         self.myView.lineEdit.setText("")
         self.myView.lineEdit_2.setText("")
         self.myView.label_4.setText("Geben Sie einen Start und ein Ziel ein")
@@ -65,12 +75,25 @@ class Controller(QWidget):
         self.myView.radioButton_5.setChecked(True)
 
     def submit(self):
+        """ submit - Method
+
+        This Method will be called when the user clicks the Submit Button
+        The input data will be passed to the model object which will create an HTTP Request
+        After that the returned String will bes set for the output fields
+
+        """
         self.getRadios()
         value = self.myModel.getData(self.myView.lineEdit.text(), self.myView.lineEdit_2.text(), self.mode, self.lang)
         self.myView.textEdit.setText(value.get('time') + value.get('instr'))
         self.myView.label_4.setText("Status: " + value.get('status'))
 
     def getRadios(self):
+        """ getRadios - Method
+
+        This Method is used to get the current State of all RadioButtons
+        which will later be supplid to the HTTP - Request
+
+        """
         for radio in self.myView.verticalGroupBox.findChildren(PS.QtGui.QRadioButton):
             if radio.isChecked() == True:
                 self.mode = radio.text()
@@ -80,6 +103,13 @@ class Controller(QWidget):
                 self.lang = radio.text()
 
     def keyPressEvent(self, event):
+        """ overrides keyPressEvent from QWidget
+
+        This Method will be called when a Key in the focus range of the QWidget is called
+        When the enter key is pressed and no input field is empty the submit method will be called
+
+        :param event: key Event
+        """
         if event.key() == 16777220:
             if self.myView.lineEdit.text() == "" or self.myView.lineEdit_2.text() == "":
                 self.myView.label_4.setText("Status: Bitte Geben Sie Start und Ziel ein")
